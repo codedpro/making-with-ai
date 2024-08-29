@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- <script
+      src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3360006850930559"
+      crossorigin="anonymous"
+      async
+    ></script> -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.7.3/axios.min.js"
+      integrity="sha512-zJXKBryKlsiDaWcWQ9fuvy50SG03/Qc5SqfLXxHmk9XiUUbcD9lXYjHDBxLFOuZSU6ULXaJ69bd7blSMEgxXNQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AnyAITool | AI Image Generator</title>
+    <link rel="icon" href="/images/logo.png" type="image/x-icon" />
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <link rel="stylesheet" href="./../css/output.css" />
+    <link rel="stylesheet" href="./../css/style.css" />
+    <script src="https://unpkg.com/wavesurfer.js"></script>
+  </head>
+
+  <body class="relative min-h-screen m-0">
+    <div class="page-wrapper min-h-screen flex flex-col justify-between abeezee-regular">
+      <!-- Main Header-->
+      <header class="main-header">
+        <div class="wrapper">
+          <div class="main-menu">
+            <div class="menu-backdrop"></div>
+            <nav
+              class="menu-box relative left-0 right-0 p-0 w-full h-full max-h-full overflow-y-auto flex flex-col justify-start"
+            >
+              <div class="upper-box relative w-full px-5 py-6 flex items-center justify-between">
+                <div class="theme-toggle cursor-pointer"><i id="toggleIcon" class="fa-regular fa-moon"></i></div>
+                <div class="close-btn text-center" onclick="closeMenu()"><i class="fa-solid fa-arrow-left"></i></div>
+              </div>
+              <ul class="navigation relative block w-full">
+                <li class="">
+                  <a href="./../index.html">Home</a>
+                </li>
+                <li class="dropdown current">
+                  <a href="#">AI Tools</a>
+                  <ul>
+                    <li><a href="image-generator.html">Image Generator</a></li>
+                    <li><a href="text-to-music.html">Text to Music</a></li>
+                  </ul>
+                  <div class="dropdown-btn"><i class="fa fa-angle-down"></i></div>
+                </li>
+                <li class="dropdown">
+                  <a href="#">Others</a>
+                  <ul>
+                    <li><a href="./../blog.html">Blog</a></li>
+                    <li>
+                      <a href="./../stock.html">Stock</a>
+                    </li>
+                  </ul>
+                  <div class="dropdown-btn"><i class="fa fa-angle-down"></i></div>
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+        <div class="auto-container flex items-center">
+          <div class="hamburger-icon flex-shrink-0 cursor-pointer" onclick="openMenu()">&#9776;</div>
+          <div class="logo grow flex items-center justify-end sm:justify-center">
+            <a href="./../index.html"><img src="./../images/logo.png" alt="Logo AnyAITool" title="AnyAITool" /></a>
+            <h2 class="logo-title">AnyAITool</h2>
+          </div>
+        </div>
+      </header>
+
+      <!-- Image Refine Section-->
+
+    <form id="tts-form">
+      <label for="text-input" class="form-label">Enter Text:</label>
+      <textarea id="text-input" rows="4" cols="50" placeholder="Enter text here..."></textarea><br /><br />
+
+      <label for="duration-input" class="form-label">Select Duration:</label>
+      <select id="duration-input">
+        <option value="0s">Original Audio</option>
+        <option value="5s">5 seconds</option>
+        <option value="10s">10 seconds</option>
+        <option value="20s">20 seconds</option>
+        <option value="30s">30 seconds</option>
+        <option value="custom">Custom</option> <!-- Added Custom Option -->
+      </select>
+      <br /><br />
+
+      <label for="custom-duration-input" class="form-label" id="custom-duration-label" style="display: none;">Or Enter Custom Duration (seconds):</label>
+      <input type="number" id="custom-duration-input" min="0" placeholder="Enter seconds" style="display: none;" />
+      <br /><br />
+
+      <button type="submit" class="synthesize-button"><i class="fas fa-waveform"></i> Synthesize</button>
+    
+      <p id="loading">Loading... Please wait.</p>
+      <audio id="audio-output" controls></audio>
+      <p>
+        <a id="download-button" download="synthesized-audio.wav">Download Audio</a>
+      </p>
+      <div id="waveform"></div>
+    </form>
+ 
+ <!-- Main Footer -->
+ <footer id="footer" class="main-footer relative">
+  <div class="footer-links w-full mx-auto px-5 py-10">
+    <div class="flex flex-wrap justify-center sm:justify-between gap-4 md:gap-0">
+      <div class="sm:basis-3/4 flex flex-wrap justify-center sm:justify-between gap-3 md:gap-0 pb-4 md:pb-0">
+        <a href="./../privacy-policy.html">Privacy Policy</a>
+        <a href="./../terms-and-conditions.html">Terms & Conditions</a>
+        <a href="./../contact.html">Contact</a>
+        <a href="./../faq.html">FAQ</a>
+        <a href="./../blog.html">Blog</a>
+      </div>
+      <div class="copyright-text text-center">&copy;2024 <span class="text-color">AnyAITool</span></div>
+    </div>
+  </div>
+</footer>
+</div>
+
+    <!-- <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/deeplab"></script> -->
+    <script src="./js/index.js"></script>
+    <script>
+      document.getElementById('duration-input').addEventListener('change', function() {
+        const customInput = document.getElementById('custom-duration-input');
+        const customLabel = document.getElementById('custom-duration-label');
+        if (this.value === 'custom') {
+          customInput.style.display = 'inline';
+          customLabel.style.display = 'inline';
+        } else {
+          customInput.style.display = 'none';
+          customLabel.style.display = 'none';
+        }
+      });
+
+      document.getElementById('tts-form').addEventListener('submit', async (event) => {
+        event.preventDefault();
+
+        const text = document.getElementById('text-input').value;
+        let duration = document.getElementById('duration-input').value.replace('s', '');
+        const customDuration = document.getElementById('custom-duration-input').value;
+
+        if (document.getElementById('duration-input').value === 'custom' && customDuration) {
+          duration = customDuration;
+        }
+
+        const loadingElement = document.getElementById('loading');
+        const audioElement = document.getElementById('audio-output');
+        const downloadButton = document.getElementById('download-button');
+        const waveformContainer = document.getElementById('waveform');
+
+        loadingElement.style.display = 'block';
+        audioElement.src = '';
+        downloadButton.style.display = 'none';
+
+        // Clear previous waveform
+        waveformContainer.innerHTML = '';
+
+        try {
+          const response = await fetch('/api/synthesize', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ text, duration }),
+          });
+
+          const result = await response.json();
+
+          if (response.ok) {
+            audioElement.src = result.audioUrl;
+            downloadButton.href = result.audioUrl;
+            downloadButton.style.display = 'inline';
+
+            // Initialize WaveSurfer and load the audio
+            const wavesurfer = WaveSurfer.create({
+              container: '#waveform',
+              waveColor: 'violet',
+              progressColor: 'purple',
+              barWidth: 2,
+              height: 100,
+              responsive: true
+            });
+
+            wavesurfer.load(result.audioUrl);
+
+            // Sync audio with WaveSurfer
+            audioElement.onplay = () => wavesurfer.play();
+            audioElement.onpause = () => wavesurfer.pause();
+
+            audioElement.ontimeupdate = () => {
+              if (!wavesurfer.isPlaying()) {
+                wavesurfer.seekTo(audioElement.currentTime / audioElement.duration);
+              }
+            };
+
+            wavesurfer.on('seek', (progress) => {
+              audioElement.currentTime = progress * audioElement.duration;
+            });
+
+            audioElement.onseeked = () => {
+              wavesurfer.seekTo(audioElement.currentTime / audioElement.duration);
+            };
+
+          } else {
+            alert(result.error);
+          }
+        } catch (error) {
+          alert('An error occurred. Please try again.');
+        } finally {
+          loadingElement.style.display = 'none';
+        }
+      });
+    </script>
+  </body>
+</html>

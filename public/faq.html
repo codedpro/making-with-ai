@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="AnyAITool - FAQ for AI Image Generator" />
+    <title>AnyAITool | FAQ</title>
+    <link rel="icon" href="/images/logo.png" type="image/x-icon" />
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="./css/output.css" />
+    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+</head>
+
+<body class="relative min-h-screen m-0">
+    <div class="page-wrapper min-h-screen flex flex-col justify-between abeezee-regular">
+        <!-- Main Header-->
+        <header class="main-header">
+            <div class="wrapper">
+                <div class="main-menu">
+                    <div class="menu-backdrop"></div>
+                    <nav class="menu-box relative left-0 right-0 p-0 w-full h-full max-h-full overflow-y-auto flex flex-col justify-start">
+                        <div class="upper-box relative w-full px-5 py-6 flex items-center justify-between">
+                            <div class="theme-toggle cursor-pointer"><i id="toggleIcon" class="fa-regular fa-moon"></i></div>
+                            <div class="close-btn text-center" onclick="closeMenu()"><i class="fa-solid fa-arrow-left"></i></div>
+                        </div>
+                        <ul class="navigation relative block w-full">
+                            <li class="current">
+                                <a href="index.html">Home</a>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#">AI Tools</a>
+                                <ul>
+                                    <li><a href="./image-generator/image-generator.html">Image Generator</a></li>
+                                    <li><a href="text-to-music.html">Text to Music</a></li>
+                                </ul>
+                                <div class="dropdown-btn"><i class="fa fa-angle-down"></i></div>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#">Others</a>
+                                <ul>
+                                    <li><a href="blog.html">Blog</a></li>
+                                    <li>
+                                        <a href="stock.html">Stock</a>
+                                    </li>
+                                </ul>
+                                <div class="dropdown-btn"><i class="fa fa-angle-down"></i></div>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+            <div class="auto-container flex items-center">
+                <div class="hamburger-icon flex-shrink-0 cursor-pointer" onclick="openMenu()">&#9776;</div>
+                <div class="logo grow flex items-center justify-end sm:justify-center">
+                    <a href="index.html"><img src="./images/logo.png" alt="Logo AnyAITool" title="AnyAITool" /></a>
+                    <h2 class="logo-title">AnyAITool</h2>
+                </div>
+            </div>
+        </header>
+
+        <!-- FAQ -->
+
+        <section class="faq-section my-16">
+            <div class="auto-container">
+                <h2 class="text-center">Frequently Asked Questions (FAQs)</h2>
+                <div class="accordion-block">
+                    <h4 class="mt-7">General</h4>
+                    <div class="faq-item">
+                        <div class="faq-question py-5 pr-1">
+                            Q1: What is Making With AI?
+                            <i class="fa fa-chevron-down faq-arrow"></i>
+                        </div>
+                        <div class="faq-answer py-5 px-2.5 hidden">
+                            <p>A1: Making With AI is the place where it aims to use the incredible gift of Artificial Intelligence, and let it help others to unleash their creative ideas to reality quickly and easily.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question py-5 pr-1">
+                            Q2: How to use the site?
+                            <i class="fa fa-chevron-down faq-arrow"></i>
+                        </div>
+                        <div class="faq-answer py-5 px-2.5 hidden">
+                            <p>A2: The site allows you to choose what, how, and how many. It allows you to generate any image based on a simple description, how many images (1-5) and in what style to generate the images.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question py-5 pr-1">
+                            Q3: Is there a limit of how many images the user can generate?
+                            <i class="fa fa-chevron-down faq-arrow"></i>
+                        </div>
+                        <div class="faq-answer py-5 px-2.5 hidden">
+                            <p>A3: Yes and no. Basically, the user can generate up to 5 images per 60 seconds, and after that, the user can continue to generate another 5 images. The site aims to expand in the future the amount of images it can generate per time.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question py-5 pr-1">
+                            Q4: Can the generated images be used for commercial purposes?
+                            <i class="fa fa-chevron-down faq-arrow"></i>
+                        </div>
+                        <div class="faq-answer py-5 px-2.5 hidden">
+                            <p>A4: About commercial usage of generated images, please refer to the Terms of Use page.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question py-5 pr-1">
+                            Q5: How to contact Making With AI?
+                            <i class="fa fa-chevron-down faq-arrow"></i>
+                        </div>
+                        <div class="faq-answer py-5 px-2.5 hidden">
+                            <p>A5: For any support or business inquiries, please contact: <a href="mailto:info@makingwithai.com">info@makingwithai.com</a></p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question py-5 pr-1">
+                            Q6: How do I report an inappropriate image?
+                            <i class="fa fa-chevron-down faq-arrow"></i>
+                        </div>
+                        <div class="faq-answer py-5 px-2.5 hidden">
+                            <p>A6: In case of encountering an inappropriate image, please contact <a href="mailto:info@makingwithai.com">info@makingwithai.com</a> with details.</p>
+                        </div>
+                    </div>
+
+                    <h4 class="mt-7">Technical</h4>
+
+                    <div class="faq-item">
+                        <div class="faq-question py-5 pr-1">
+                            Q7: Are there system requirements for using Making With AI?
+                            <i class="fa fa-chevron-down faq-arrow"></i>
+                        </div>
+                        <div class="faq-answer py-5 px-2.5 hidden">
+                            <p>A7: No. The Making With AI site has no hardware system requirements for both desktop and mobile. The performance experience of the site will depend on the user's internet speed and stability.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question py-5 pr-1">
+                            Q8: What to do if the image generation fails?
+                            <i class="fa fa-chevron-down faq-arrow"></i>
+                        </div>
+                        <div class="faq-answer py-5 px-2.5 hidden">
+                            <p>A8: If an image generation fails, an error message should appear. There is always an option to try generating again, but if the issue persists, please contact the support.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question py-5 pr-1">
+                            Q9: Is it possible to view images in the Gallery in full size?
+                            <i class="fa fa-chevron-down faq-arrow"></i>
+                        </div>
+                        <div class="faq-answer py-5 px-2.5 hidden">
+                            <p>A9: Yes. Simply click on any image you want to view in full size.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question py-5 pr-1">
+                            Q10: How to download a generated image?
+                            <i class="fa fa-chevron-down faq-arrow"></i>
+                        </div>
+                        <div class="faq-answer py-5 px-2.5 hidden">
+                            <p>A10: Click on the generated image, select the desired resolution and format, and click "Download".</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question py-5 pr-1">
+                            Q11: What formats and resolutions are available for download?
+                            <i class="fa fa-chevron-down faq-arrow"></i>
+                        </div>
+                        <div class="faq-answer py-5 px-2.5 hidden">
+                            <p>A11: The available image formats are:
+                            <ul>
+                                <li>JPG</li>
+                                <li>PNG</li>
+                                <li>WebP</li>
+                            </ul>
+                            The available resolutions are:
+                            <ul>
+                                <li>1024x1024</li>
+                                <li>1792x1024</li>
+                                <li>1024x1792</li>
+                            </ul>
+                            The site aims to expand in the future the types of formats and resolutions.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question py-5 pr-1">
+                            Q12: How to change the theme of the site?
+                            <i class="fa fa-chevron-down faq-arrow"></i>
+                        </div>
+                        <div class="faq-answer py-5 px-2.5 hidden">
+                            <p>A12: Click on the theme icon (half-circle) at the top of the page to select between light or dark themes.</p>
+                        </div>
+                    </div>
+
+                    <h4 class="mt-7">Image Management</h4>
+
+                    <div class="faq-item">
+                        <div class="faq-question py-5 pr-1">
+                            Q13: Is it possible to search and filter generated images?
+                            <i class="fa fa-chevron-down faq-arrow"></i>
+                        </div>
+                        <div class="faq-answer py-5 px-2.5 hidden">
+                            <p>A13: Yes. Use the search box to find images by name and use the filter dropdown to sort images by date or alphabetically.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question py-5 pr-1">
+                            Q14: How to archive generated images?
+                            <i class="fa fa-chevron-down faq-arrow"></i>
+                        </div>
+                        <div class="faq-answer py-5 px-2.5 hidden">
+                            <p>A14: Generated images are automatically added to the "Archive" section. The archived images are only saved locally. The site aims in the future to allow users to save their archived images on cloud by creating an account on the site.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question py-5 pr-1">
+                            Q15: How to delete an image from the archive?
+                            <i class="fa fa-chevron-down faq-arrow"></i>
+                        </div>
+                        <div class="faq-answer py-5 px-2.5 hidden">
+                            <p>A15: Open the "Archive" section, click on the desired image for deletion, and click the delete icon (×) on the image. Please note that there is no confirmation message before deletion. Deleted images cannot be restored. The site aims in the future to include a confirmation message and an option to restore deleted images.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question py-5 pr-1">
+                            Q16: Is it possible to change the style of the generated images?
+                            <i class="fa fa-chevron-down faq-arrow"></i>
+                        </div>
+                        <div class="faq-answer py-5 px-2.5 hidden">
+                            <p>A16: Yes. There are built options for different styles of the generated images, simply select the desired option from the menu.</p>
+                        </div>
+                    </div>
+
+                    <h4 class="mt-7">Gallery</h4>
+
+                    <div class="faq-item">
+                        <div class="faq-question py-5 pr-1">
+                            Q17: What is the Gallery?
+                            <i class="fa fa-chevron-down faq-arrow"></i>
+                        </div>
+                        <div class="faq-answer py-5 px-2.5 hidden">
+                            <p>A17: The Gallery is a source of AI generated images provided by the site that users can explore and download. AI generated images by users won't be published in the gallery or in any other source. The site aims in the future to showcase AI generated images by others.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question py-5 pr-1">
+                            Q18: How to access the Gallery?
+                            <i class="fa fa-chevron-down faq-arrow"></i>
+                        </div>
+                        <div class="faq-answer py-5 px-2.5 hidden">
+                            <p>A18: Access the Gallery by clicking on the "Gallery" link in the toolbar at the top of the page.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question py-5 pr-1">
+                            Q19: Is it possible to search for specific images in the Gallery?
+                            <i class="fa fa-chevron-down faq-arrow"></i>
+                        </div>
+                        <div class="faq-answer py-5 px-2.5 hidden">
+                            <p>A19: Yes. Simply use the search input at the top of the Gallery page to search for images by name. There is also a filter with options for sorting images.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question py-5 pr-1">
+                            Q20: What filter options are available in the Gallery?
+                            <i class="fa fa-chevron-down faq-arrow"></i>
+                        </div>
+                        <div class="faq-answer py-5 px-2.5 hidden">
+                            <p>A20: The filter options are:
+                            <ul>
+                                <li>Latest-Oldest</li>
+                                <li>Oldest-Latest</li>
+                                <li>A-Z</li>
+                                <li>Z-A</li>
+                            </ul>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question py-5 pr-1">
+                            Q21: How to download images from the Gallery?
+                            <i class="fa fa-chevron-down faq-arrow"></i>
+                        </div>
+                        <div class="faq-answer py-5 px-2.5 hidden">
+                            <p>A21: While viewing an image in full size, select the desired format and resolution, then click the "Download" button.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Main Footer -->
+        <footer id="footer" class="main-footer relative">
+            <div class="footer-links w-full mx-auto px-5 py-10">
+                <div class="flex flex-wrap justify-center sm:justify-between gap-4 md:gap-0">
+                    <div class="sm:basis-3/4 flex flex-wrap justify-center sm:justify-between gap-3 md:gap-0 pb-4 md:pb-0">
+                        <a href="privacy-policy.html">Privacy Policy</a>
+                        <a href="terms-and-conditions.html">Terms & Conditions</a>
+                        <a href="contact.html">Contact</a>
+                        <a href="faq.html">FAQ</a>
+                        <a href="blog.html">Blog</a>
+                    </div>
+                    <div class="copyright-text text-center">&copy;2024 <span class="text-color">AnyAITool</span></div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const faqItems = document.querySelectorAll('.faq-item');
+
+            faqItems.forEach((item, index) => {
+                const question = item.querySelector('.faq-question');
+                const answer = item.querySelector('.faq-answer');
+                const arrow = item.querySelector('.faq-arrow');
+
+                const isOpen = localStorage.getItem(`faq-open-${index}`);
+
+                if (isOpen === 'true') {
+                    answer.classList.remove('hidden');
+                    answer.classList.add('block');
+                    arrow.classList.remove('fa-chevron-down');
+                    arrow.classList.add('fa-chevron-up');
+                    question.classList.add('faq-question-open');
+                }
+
+                question.addEventListener('click', () => {
+                    const isCurrentlyOpen = answer.classList.contains('block');
+
+                    answer.classList.toggle('hidden');
+                    answer.classList.toggle('block');
+
+                    arrow.classList.toggle('fa-chevron-down');
+                    arrow.classList.toggle('fa-chevron-up');
+
+                    question.classList.toggle('faq-question-open');
+
+                    localStorage.setItem(`faq-open-${index}`, !isCurrentlyOpen);
+                });
+            });
+        });
+    </script>
+    <script src="./js/index.js"></script>
+</body>
+
+</html>

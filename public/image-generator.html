@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- <script
+      src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3360006850930559"
+      crossorigin="anonymous"
+      async
+    ></script> -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.7.3/axios.min.js"
+      integrity="sha512-zJXKBryKlsiDaWcWQ9fuvy50SG03/Qc5SqfLXxHmk9XiUUbcD9lXYjHDBxLFOuZSU6ULXaJ69bd7blSMEgxXNQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AnyAITool | AI Image Generator</title>
+    <link rel="icon" href="/images/logo.png" type="image/x-icon" />
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <link rel="stylesheet" href="./../css/output.css" />
+    <link rel="stylesheet" href="./../css/style.css" />
+  </head>
+
+  <body class="relative min-h-screen m-0">
+    <div class="page-wrapper min-h-screen flex flex-col justify-between abeezee-regular">
+      <!-- Main Header-->
+      <header class="main-header">
+        <div class="wrapper">
+          <div class="main-menu">
+            <div class="menu-backdrop"></div>
+            <nav
+              class="menu-box relative left-0 right-0 p-0 w-full h-full max-h-full overflow-y-auto flex flex-col justify-start"
+            >
+              <div class="upper-box relative w-full px-5 py-6 flex items-center justify-between">
+                <div class="theme-toggle cursor-pointer"><i id="toggleIcon" class="fa-regular fa-moon"></i></div>
+                <div class="close-btn text-center" onclick="closeMenu()"><i class="fa-solid fa-arrow-left"></i></div>
+              </div>
+              <ul class="navigation relative block w-full">
+                <li class="">
+                  <a href="./../index.html">Home</a>
+                </li>
+                <li class="dropdown current">
+                  <a href="#">AI Tools</a>
+                  <ul>
+                    <li><a href="image-generator.html">Image Generator</a></li>
+                    <li><a href="text-to-music.html">Text to Music</a></li>
+                    <li><a href="image-refine.html">Text Refine</a></li>
+                  </ul>
+                  <div class="dropdown-btn"><i class="fa fa-angle-down"></i></div>
+                </li>
+                <li class="dropdown">
+                  <a href="#">Others</a>
+                  <ul>
+                    <li><a href="./../blog.html">Blog</a></li>
+                    <li>
+                      <a href="./../stock.html">Stock</a>
+                    </li>
+                  </ul>
+                  <div class="dropdown-btn"><i class="fa fa-angle-down"></i></div>
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+        <div class="auto-container flex items-center">
+          <div class="hamburger-icon flex-shrink-0 cursor-pointer" onclick="openMenu()">&#9776;</div>
+          <div class="logo grow flex items-center justify-end sm:justify-center">
+            <a href="./../index.html"><img src="./../images/logo.png" alt="Logo AnyAITool" title="AnyAITool" /></a>
+            <h2 class="logo-title">AnyAITool</h2>
+          </div>
+        </div>
+      </header>
+
+      <!-- Image Generator Section -->
+
+      <section class="image-generator-section grow relative my-16">
+        <div class="auto-container">
+          <h2 class="text-center">AI Image Generator</h2>
+          <div class="input-container grid grid-cols-12 items-center gap-4 md:gap-2 xl:gap-6 mt-8">
+            <div class="prompt-container col-span-12 sm:col-span-12 xl:col-span-6">
+              <label for="prompt" class="hidden"></label>
+              <textarea
+                id="prompt"
+                placeholder="What do you want to see?"
+                aria-label="Image description input"
+                class="w-full bg-transparent border-none resize-none"
+              ></textarea>
+            </div>
+            <div class="col-span-3 sm:col-span-2 xl:col-span-1 md:pt-2 xl:pt-0">
+              <label for="image-count" class="hidden"></label>
+              <select id="image-count" class="image-count-select py-3 px-4 w-full" aria-label="Select number of images">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+              </select>
+            </div>
+            <div class="prompt-style-container col-span-9 sm:col-span-6 xl:col-span-3 md:pt-2 xl:pt-0">
+              <label for="prompt-style" class="hidden"></label>
+              <select id="prompt-style" class="w-full py-3 px-4">
+                <option value="detailed">Detailed and High-quality</option>
+                <option value="animated">Colorful and Animated</option>
+              </select>
+            </div>
+            <div class="col-span-12 sm:col-span-4 xl:col-span-2 md:pt-2 xl:pt-0">
+              <button id="generate-btn" class="generate-btn w-full flex justify-center items-center gap-1.5 px-4 py-3">
+                <svg
+                  class="w-4 h-4 font-light"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 21 21"
+                >
+                  <path
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M11.15 5.6h.01m3.337 1.913h.01m-6.979 0h.01M5.541 11h.01M15 15h2.706a1.957 1.957 0 0 0 1.883-1.325A9 9 0 1 0 2.043 11.89 9.1 9.1 0 0 0 7.2 19.1a8.62 8.62 0 0 0 3.769.9A2.013 2.013 0 0 0 13 18v-.857A2.034 2.034 0 0 1 15 15Z"
+                  />
+                </svg>
+                Generate
+              </button>
+            </div>
+          </div>
+
+          <div id="rate-limit-message" class="hidden">
+            Rate limit exceeded. Please wait <span id="countdown">60</span> seconds.
+          </div>
+          <div class="preloader w-full h-2.5 sm:w-1/3 md:w-full lg:w-1/3 relative rounded-full mt-8 overflow-hidden">
+            <div class="h-2.5 rounded-full progress-bar"></div>
+          </div>
+          <div id="error-log" class="mt-8 px-4 py-3 rounded-lg"></div>
+          <div id="image-container" class="relative image-grid grid gap-5"></div>
+          <div class="archive-container mt-8">
+            <div class="archive-toggle" id="archiveToggle">
+              <h4>Archive</h4>
+              <i class="fas fa-chevron-right ml-3" id="archiveToggleIcon"></i>
+            </div>
+            <div class="archive flex-wrap mt-8 gap-5" id="archive"></div>
+          </div>
+          <!-- Modal -->
+          <div id="imageModal" class="modal">
+            <div class="relative h-screen grid items-center grid-cols-1">
+              <div class="close-modal absolute right-6 top-6 sm:top-10 cursor-pointer col-span-1 text-lg">
+                <i class="icon fa fa-times"></i>
+              </div>
+              <img class="col-span-1 modal-content w-4/5 mx-auto" id="modalImage" />
+              <div class="col-span-1">
+                <div class="mt-7 mb-8 download-options w-4/5 mx-auto grid grid-cols-7 gap-3">
+                  <select class="resolution-select col-span-3 py-3 pl-4">
+                    <option value="1024x1024">1024x1024</option>
+                    <option value="1792x1024">1792x1024</option>
+                    <option value="1024x1792">1024x1792</option>
+                  </select>
+                  <select class="format-select col-span-3 py-3 pl-4" onchange="updateResolutionVisibility(this)">
+                    <option value="webp">WebP</option>
+                    <option value="png">PNG</option>
+                    <option value="jpg">JPG</option>
+                  </select>
+                  <button id="downloadButton" class="download-btn col-span-1 bg-transparent border-0">
+                    <i class="fa-solid fa-file-arrow-down"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Main Footer -->
+      <footer id="footer" class="main-footer relative">
+        <div class="footer-links w-full mx-auto px-5 py-10">
+          <div class="flex flex-wrap justify-center sm:justify-between gap-4 md:gap-0">
+            <div class="sm:basis-3/4 flex flex-wrap justify-center sm:justify-between gap-3 md:gap-0 pb-4 md:pb-0">
+              <a href="./../privacy-policy.html">Privacy Policy</a>
+              <a href="./../terms-and-conditions.html">Terms & Conditions</a>
+              <a href="./../contact.html">Contact</a>
+              <a href="./../faq.html">FAQ</a>
+              <a href="./../blog.html">Blog</a>
+            </div>
+            <div class="copyright-text text-center">&copy;2024 <span class="text-color">AnyAITool</span></div>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <!-- <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/deeplab"></script> -->
+    <script src="./js/index.js"></script>
+    <script src="./js/image-generator.js"></script>
+  </body>
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- <script
+      src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3360006850930559"
+      crossorigin="anonymous"
+      async
+    ></script> -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.7.3/axios.min.js"
+      integrity="sha512-zJXKBryKlsiDaWcWQ9fuvy50SG03/Qc5SqfLXxHmk9XiUUbcD9lXYjHDBxLFOuZSU6ULXaJ69bd7blSMEgxXNQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AnyAITool | Home</title>
+
+    <link rel="shortcut icon" href="/images/logo.png" type="image/x-icon" />
+    <link rel="icon" href="/images/logo.png" type="image/x-icon" />
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="./css/output.css" />
+    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="stylesheet" href="./css/flaticon.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  </head>
+
+  <body class="min-h-screen">
+    <div class="page-wrapper h-screen abeezee-regular flex flex-col">
+      <!-- Main Header-->
+      <header class="main-header">
+        <div class="wrapper">
+          <div class="main-menu">
+            <div class="menu-backdrop"></div>
+            <nav
+              class="menu-box relative left-0 right-0 p-0 w-full h-full max-h-full overflow-y-auto flex flex-col justify-start"
+            >
+              <div class="upper-box relative w-full px-5 py-6 flex items-center justify-between">
+                <div class="theme-toggle cursor-pointer"><i id="toggleIcon" class="fa-regular fa-moon"></i></div>
+                <div class="close-btn text-center" onclick="closeMenu()"><i class="fa-solid fa-arrow-left"></i></div>
+              </div>
+              <ul class="navigation relative block w-full">
+                <li class="current">
+                  <a href="index.html">Home</a>
+                </li>
+                <li class="dropdown">
+                  <a href="#">AI Tools</a>
+                  <ul>
+                    <li><a href="./image-generator/image-generator.html">Image Generator</a></li>
+                    <li><a href="text-to-music.html">Text to Music</a></li>
+                  </ul>
+                  <div class="dropdown-btn"><i class="fa fa-angle-down"></i></div>
+                </li>
+                <li class="dropdown">
+                  <a href="#">Others</a>
+                  <ul>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li>
+                      <a href="stock.html">Stock</a>
+                    </li>
+                  </ul>
+                  <div class="dropdown-btn"><i class="fa fa-angle-down"></i></div>
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+        <div class="auto-container flex items-center">
+          <div class="hamburger-icon flex-shrink-0 cursor-pointer" onclick="openMenu()">&#9776;</div>
+          <div class="logo grow flex items-center justify-end sm:justify-center">
+            <a href="index.html"><img src="./images/logo.png" alt="Logo AnyAITool" title="AnyAITool" /></a>
+            <h2 class="logo-title">AnyAITool</h2>
+          </div>
+        </div>
+      </header>
+
+      <!-- Contact Section -->
+
+      <section class="contact-section relative grow">
+        <div class="auto-container h-full w-full flex justify-center items-center">
+          <div class="call-to-action text-center">
+            <h2>Have any question? Get in touch with us</h2>
+            <a href="mailto:info@makingwithai.com" class="text-color">info@makingwithai.com</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Main Footer -->
+      <footer id="footer" class="main-footer relative">
+        <div class="footer-links w-full mx-auto px-5 py-10">
+          <div class="flex flex-wrap justify-center sm:justify-between gap-4 md:gap-0">
+            <div class="sm:basis-3/4 flex flex-wrap justify-center sm:justify-between gap-3 md:gap-0 pb-4 md:pb-0">
+              <a href="privacy-policy.html">Privacy Policy</a>
+              <a href="terms-and-conditions.html">Terms & Conditions</a>
+              <a href="contact.html">Contact</a>
+              <a href="faq.html">FAQ</a>
+              <a href="blog.html">Blog</a>
+            </div>
+            <div class="copyright-text text-center">&copy;2024 <span class="text-color">AnyAITool</span></div>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <!-- <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/deeplab"></script> -->
+    <script src="./js/index.js"></script>
+  </body>
+</html>

@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AnyAITool | Gallery</title>
+    <link rel="icon" href="/images/logo.png" type="image/x-icon" />
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="./css/output.css" />
+    <link rel="stylesheet" href="./css/style.css" />
+</head>
+
+<body class="relative min-h-screen m-0">
+    <div class="page-wrapper min-h-screen flex flex-col justify-between abeezee-regular">
+        <!-- Main Header-->
+        <header class="main-header">
+            <div class="wrapper">
+                <div class="main-menu">
+                    <div class="menu-backdrop"></div>
+                    <nav class="menu-box relative left-0 right-0 p-0 w-full h-full max-h-full overflow-y-auto flex flex-col justify-start">
+                        <div class="upper-box relative w-full px-5 py-6 flex items-center justify-between">
+                            <div class="theme-toggle cursor-pointer"><i id="toggleIcon" class="fa-regular fa-moon"></i></div>
+                            <div class="close-btn text-center" onclick="closeMenu()"><i class="fa-solid fa-arrow-left"></i></div>
+                        </div>
+                        <ul class="navigation relative block w-full">
+                            <li class="current">
+                                <a href="index.html">Home</a>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#">AI Tools</a>
+                                <ul>
+                                    <li><a href="./image-generator/image-generator.html">Image Generator</a></li>
+                                    <li><a href="text-to-music.html">Text to Music</a></li>
+                                </ul>
+                                <div class="dropdown-btn"><i class="fa fa-angle-down"></i></div>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#">Others</a>
+                                <ul>
+                                    <li><a href="blog.html">Blog</a></li>
+                                    <li>
+                                        <a href="stock.html">Stock</a>
+                                    </li>
+                                </ul>
+                                <div class="dropdown-btn"><i class="fa fa-angle-down"></i></div>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+            <div class="auto-container flex items-center">
+                <div class="hamburger-icon flex-shrink-0 cursor-pointer" onclick="openMenu()">&#9776;</div>
+                <div class="logo grow flex items-center justify-end sm:justify-center">
+                    <a href="index.html"><img src="./images/logo.png" alt="Logo AnyAITool" title="AnyAITool" /></a>
+                    <h2 class="logo-title">AnyAITool</h2>
+                </div>
+            </div>
+        </header>
+
+        <!-- Gallery Section -->
+
+        <section class="gallery-section my-16">
+            <div class="auto-container">
+                <div class="section-title text-center">
+                    <h2 class="inline-block">Image Gallery</h2>
+                </div>
+                <div class="gallery-bar grid grid-cols-12 gap-4 mt-8">
+                    <div class="search-box relative col-span-12 sm:col-span-6 md:col-span-6 lg:col-span-3 flex items-center">
+                        <label for="searchInput"></label>
+                        <input type="text" id="searchInput" placeholder="Search by image name" class="w-full pl-10 pr-4 py-3">
+                        <button id="searchButton" class="absolute left-4"> <svg class="w-4 h-4 font-light" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 21 21">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.15 5.6h.01m3.337 1.913h.01m-6.979 0h.01M5.541 11h.01M15 15h2.706a1.957 1.957 0 0 0 1.883-1.325A9 9 0 1 0 2.043 11.89 9.1 9.1 0 0 0 7.2 19.1a8.62 8.62 0 0 0 3.769.9A2.013 2.013 0 0 0 13 18v-.857A2.034 2.034 0 0 1 15 15Z" />
+                            </svg></button>
+                    </div>
+                    <div class="filter-box relative col-span-12 sm:col-span-6 md:col-span-6 lg:col-span-3 flex items-center">
+                        <div class="icon-box absolute left-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-down-up" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M11.5 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L11 2.707V14.5a.5.5 0 0 0 .5.5m-7-14a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L4 13.293V1.5a.5.5 0 0 1 .5-.5" />
+                            </svg>
+                        </div>
+                        <select id="filterSelect" class="w-full pl-10 py-3">
+                            <option value="latest" selected>Latest-Oldest</option>
+                            <option value="oldest">Oldest-Latest</option>
+                            <option value="az">A-Z</option>
+                            <option value="za">Z-A</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Image Gallery -->
+
+                <div class="image-gallery mt-7">
+                    <div class="grid grid-cols-12 gap-4">
+                        <div class="col-span-12 sm:col-span-6 lg:col-span-4">
+                            <div class="image-card">
+
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Pagination Controls -->
+                <div id="pagination" class="pagination flex justify-center flex-wrap mt-9"></div>
+                <!-- Modal -->
+                <div id="imageModal" class="modal">
+                    <div class="relative h-screen grid items-center grid-cols-1">
+                        <div class="close-modal absolute right-6 top-6 sm:top-10 cursor-pointer col-span-1 text-lg">
+                            <i class="icon fa fa-times"></i>
+                        </div>
+                        <img class="col-span-1 modal-content w-4/5 mx-auto" id="modalImage" />
+                        <div class="col-span-1">
+                            <div class="mt-7 mb-8 download-options w-4/5 mx-auto grid grid-cols-7 gap-3">
+                                <select class="resolution-select col-span-3 py-3 pl-4">
+                                    <option value="1024x1024">1024x1024</option>
+                                    <option value="1792x1024">1792x1024</option>
+                                    <option value="1024x1792">1024x1792</option>
+                                </select>
+                                <select class="format-select col-span-3 py-3 pl-4" onchange="updateResolutionVisibility(this)">
+                                    <option value="webp">WebP</option>
+                                    <option value="png">PNG</option>
+                                    <option value="jpg">JPG</option>
+                                </select>
+                                <button id="downloadButton" class="download-btn col-span-1 bg-transparent border-0">
+                                    <i class="fa-solid fa-file-arrow-down"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Main Footer -->
+        <footer id="footer" class="main-footer relative">
+            <div class="footer-links w-full mx-auto px-5 py-10">
+                <div class="flex flex-wrap justify-center sm:justify-between gap-4 md:gap-0">
+                    <div class="sm:basis-3/4 flex flex-wrap justify-center sm:justify-between gap-3 md:gap-0 pb-4 md:pb-0">
+                        <a href="privacy-policy.html">Privacy Policy</a>
+                        <a href="terms-and-conditions.html">Terms & Conditions</a>
+                        <a href="contact.html">Contact</a>
+                        <a href="faq.html">FAQ</a>
+                        <a href="blog.html">Blog</a>
+                    </div>
+                    <div class="copyright-text text-center">&copy;2024 <span class="text-color">AnyAITool</span></div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    </div>
+    <script src="./js/imagesData.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const searchInput = document.getElementById('searchInput');
+            const searchButton = document.getElementById('searchButton');
+            const filterSelect = document.getElementById('filterSelect');
+            const imageContainer = document.getElementById('imageContainer');
+            const modal = document.getElementById('imageModal');
+            const modalImage = document.getElementById('modalImage');
+            const closeModalButton = document.querySelector('.close-modal');
+            const toggleIcon = document.getElementById('toggleIcon');
+            const modalFormatSelect = document.getElementById('modalFormatSelect');
+            const modalResolutionSelect = document.getElementById('modalResolutionSelect');
+            const downloadButton = document.getElementById('downloadButton');
+            const pagination = document.getElementById('pagination');
+
+            let currentImage = null;
+            let currentPage = 1;
+            let imagesPerPage = window.innerWidth <= 768 ? 9 : 19;
+
+            // Function to update the number of images per page based on screen width
+            function updateImagesPerPage() {
+                imagesPerPage = window.innerWidth <= 768 ? 9 : 19;
+            }
+
+            // Event listener to update images per page on window resize
+            window.addEventListener('resize', () => {
+                updateImagesPerPage();
+                filterImages();
+            });
+
+            // Function to display images in the image container
+            function displayImages(filteredImages, page = 1) {
+                const imageGallery = document.querySelector('.image-gallery .grid');
+                imageGallery.innerHTML = '';  // Clear existing content
+
+                const startIndex = (page - 1) * imagesPerPage;
+                const endIndex = page * imagesPerPage;
+                const imagesToDisplay = filteredImages.slice(startIndex, endIndex);
+
+                imagesToDisplay.forEach((image) => {
+                    const colContainer = document.createElement('div');
+                    colContainer.className = 'col-span-6 sm:col-span-6 md:col-span-4 lg:col-span-3';
+
+                    const imageCard = document.createElement('div');
+                    imageCard.className = 'image-card';
+
+                    const img = document.createElement('img');
+                    img.src = image.src;
+                    img.alt = image.name;
+                    img.className = 'rounded-lg';
+
+                    imageCard.appendChild(img);
+
+                    colContainer.appendChild(imageCard);
+
+                    imageGallery.appendChild(colContainer);
+
+                    img.addEventListener('click', () => openModal(image));
+                });
+
+                // Display pagination if needed
+                if (filteredImages.length > imagesPerPage) {
+                    displayPagination(filteredImages.length, page);
+                } else {
+                    pagination.innerHTML = '';
+                }
+            }
+
+            // Function to handle image download
+            function downloadImage(src, format, resolution) {
+                const canvas = document.createElement('canvas');
+                const ctx = canvas.getContext('2d');
+                const img = new Image();
+
+                img.crossOrigin = 'anonymous';
+                img.src = src;
+
+                img.onload = () => {
+                    const [width, height] = resolution.split('x').map(Number);
+                    canvas.width = width;
+                    canvas.height = height;
+                    ctx.drawImage(img, 0, 0, width, height);
+
+                    const link = document.createElement('a');
+                    link.href = canvas.toDataURL(`image/${format}`);
+                    link.download = `downloaded-image.${format}`;
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+                };
+            }
+
+            // Function to open the modal with selected image
+            function openModal(image) {
+                currentImage = image;
+                modal.style.display = 'block';
+                document.documentElement.classList.add('modal-open');
+                modalImage.src = image.src;
+                modalImage.alt = image.name;
+            }
+
+            // Function to close the modal
+            function closeModal() {
+                modal.style.display = 'none';
+                document.documentElement.classList.remove('modal-open');
+            }
+
+            // Event listener to close the modal when clicking outside of it
+            window.addEventListener('click', (event) => {
+                const modalBox = document.querySelector('.modal > div');
+                if (event.target === modalBox) {
+                    modal.style.display = 'none';
+                    document.documentElement.classList.remove('modal-open');
+                }
+            });
+
+            // Function to filter images based on search and filter criteria
+            function filterImages() {
+                const searchValue = searchInput.value.toLowerCase();
+                const filterValue = localStorage.getItem('filter') || filterSelect.value;
+
+                let filteredImages = images.filter(image => {
+                    return image.name.toLowerCase().includes(searchValue);
+                });
+
+                if (filterValue === 'latest') {
+                    filteredImages.reverse();
+                } else if (filterValue === 'oldest') {
+                    // No need to change the order, as it is already oldest first
+                } else if (filterValue === 'az') {
+                    filteredImages.sort((a, b) => a.name.localeCompare(b.name));
+                } else if (filterValue === 'za') {
+                    filteredImages.sort((a, b) => b.name.localeCompare(a.name));
+                }
+
+                currentPage = 1; // Reset to first page on new filter/search
+                displayImages(filteredImages, currentPage);
+            }
+
+            // Function to display pagination controls
+            function displayPagination(totalImages, page) {
+                const totalPages = Math.ceil(totalImages / imagesPerPage);
+                pagination.innerHTML = '';
+
+                for (let i = 1; i <= totalPages; i++) {
+                    const button = document.createElement('button');
+                    button.textContent = i;
+                    button.classList.toggle('active', i === page);
+                    button.classList.toggle('disabled', i === page);
+                    button.disabled = i === page;
+                    button.addEventListener('click', () => {
+                        currentPage = i;
+                        displayImages(images, currentPage);
+                    });
+                    pagination.appendChild(button);
+                }
+            }
+
+
+            // Function to apply the saved filter from local storage
+            function applySavedFilter() {
+                const savedFilter = localStorage.getItem('filter');
+                if (savedFilter) {
+                    filterSelect.value = savedFilter;
+                }
+            }
+
+
+            // Event listeners for various interactions
+            searchButton.addEventListener('click', filterImages);
+            filterSelect.addEventListener('change', () => {
+                localStorage.setItem('filter', filterSelect.value);
+                filterImages();
+            });
+            closeModalButton.addEventListener('click', closeModal);
+            downloadButton.addEventListener('click', () => {
+                if (currentImage) {
+                    const format = document.querySelector('.format-select').value;
+                    const resolution = document.querySelector('.resolution-select').value;
+                    downloadImage(currentImage.src, format, resolution);
+                }
+            });
+
+            // Initial setup to display images and apply saved settings
+            applySavedFilter();
+            updateImagesPerPage(); // Set images per page based on initial screen size
+            filterImages();
+        });
+    </script>
+    <script src="./js/index.js"></script>
+    <!-- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3360006850930559" crossorigin="anonymous"></script> -->
+</body>
+
+</html>

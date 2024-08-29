@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- <script
+      src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3360006850930559"
+      crossorigin="anonymous"
+      async
+    ></script> -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.7.3/axios.min.js"
+      integrity="sha512-zJXKBryKlsiDaWcWQ9fuvy50SG03/Qc5SqfLXxHmk9XiUUbcD9lXYjHDBxLFOuZSU6ULXaJ69bd7blSMEgxXNQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AnyAITool | AI Image Generator</title>
+    <link rel="icon" href="/images/logo.png" type="image/x-icon" />
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <link rel="stylesheet" href="./css/output.css" />
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+
+  <body class="relative min-h-screen m-0">
+    <div class="page-wrapper min-h-screen flex flex-col justify-between abeezee-regular">
+      <!-- Main Header-->
+      <header class="main-header">
+        <div class="wrapper">
+          <div class="main-menu">
+            <div class="menu-backdrop"></div>
+            <nav
+              class="menu-box relative left-0 right-0 p-0 w-full h-full max-h-full overflow-y-auto flex flex-col justify-start"
+            >
+              <div class="upper-box relative w-full px-5 py-6 flex items-center justify-between">
+                <div class="theme-toggle cursor-pointer"><i id="toggleIcon" class="fa-regular fa-moon"></i></div>
+                <div class="close-btn text-center" onclick="closeMenu()"><i class="fa-solid fa-arrow-left"></i></div>
+              </div>
+              <ul class="navigation relative block w-full">
+                <li class="">
+                  <a href="./../index.html">Home</a>
+                </li>
+                <li class="dropdown current">
+                  <a href="#">AI Tools</a>
+                  <ul>
+                    <li><a href="image-generator.html">Image Generator</a></li>
+                    <li><a href="text-to-music.html">Text to Music</a></li>
+                  </ul>
+                  <div class="dropdown-btn"><i class="fa fa-angle-down"></i></div>
+                </li>
+                <li class="dropdown">
+                  <a href="#">Others</a>
+                  <ul>
+                    <li><a href="./../blog.html">Blog</a></li>
+                    <li>
+                      <a href="./../stock.html">Stock</a>
+                    </li>
+                  </ul>
+                  <div class="dropdown-btn"><i class="fa fa-angle-down"></i></div>
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+        <div class="auto-container flex items-center">
+          <div class="hamburger-icon flex-shrink-0 cursor-pointer" onclick="openMenu()">&#9776;</div>
+          <div class="logo grow flex items-center justify-end sm:justify-center">
+            <a href="./../index.html"><img src="./../images/logo.png" alt="Logo AnyAITool" title="AnyAITool" /></a>
+            <h2 class="logo-title">AnyAITool</h2>
+          </div>
+        </div>
+      </header>
+
+<!-- Image Refine -->
+
+    <div class="container">
+      <div class="content-wrapper">
+        <div class="input-container">
+          <h1 class="page-title">AI Image Refiner</h1>
+          <p id="description-note" class="description-note">Select Your Image and Watch Magic happens</p>
+
+          <textarea
+            id="prompt"
+            class="input-textarea"
+            value="a man riding"
+            placeholder="Describe Your Image eg: a man riding a horse"
+            aria-label="Transformation description input"
+          ></textarea>
+
+          <div class="select-group">
+            <select id="imageType" class="input-select" aria-label="Select Image Type">
+              <option value="" disabled selected>Select Image Type</option>
+              <option value="animal">Animal</option>
+              <option value="painted">Painted</option>
+              <option value="people">People</option>
+              <option value="realistic">Realistic</option>
+            </select>
+
+            <select id="additionalParam" class="input-select" aria-label="Select Additional Parameter">
+              <option value="" disabled selected>Select Additional Parameter</option>
+              <option value="night-time">Night-time</option>
+              <option value="high-resolution">High Resolution</option>
+              <option value="black-and-white">Black and White</option>
+            </select>
+          </div>
+
+          <input type="file" id="inputImage" class="input-file" aria-label="Upload your image" accept="image/*" />
+
+          <button id="generate-btn" class="generate-btn" disabled>Generate (↵)</button>
+
+          <script></script>
+        </div>
+      </div>
+
+      <div id="rate-limit-message" class="hidden">Rate limit exceeded. Please wait <span id="countdown">60</span> seconds.</div>
+      <div id="image-container" class="image-grid"></div>
+      <div id="spinner-container" class="spinner-container hidden">
+        <div class="spinner"></div>
+      </div>
+      
+      
+      <div id="comparison-container" class="comparison-container" style="display: none">
+        <div id="slider-container" class="slider-container">
+          <img
+            id="original-image"
+            class="comparison-image"
+            src=""
+            alt="Original Image"
+            onclick="openModal('')"
+            draggable="false"
+          />
+          <img
+            id="generated-image"
+            class="comparison-image generated"
+            src=""
+            alt="Generated Image"
+            onclick="openModal('')"
+            draggable="false"
+          />
+          <div id="slider" class="slider"></div>
+          <div class="label after">After</div>
+          <div class="label before">Before</div>
+        </div>
+      </div>
+
+      <div id="error-log"></div>
+
+      <div class="archive-container">
+        <div class="archive-toggle" id="archiveToggle">
+          <h2>Archive</h2>
+          <i class="fas fa-chevron-right" id="archiveToggleIcon"></i>
+        </div>
+        <div class="archive" id="archive" style="display: none"></div>
+      </div>
+    </div>
+
+    <div id="imageModal" class="modal">
+      <span class="close">&times;</span>
+      <img class="modal-content" id="modalImage" />
+      <div class="download-options">
+        <select class="resolution-select">
+          <option value="1024x1024">1024x1024</option>
+          <option value="1792x1024">1792x1024</option>
+          <option value="1024x1792">1024x1792</option>
+        </select>
+        <select class="format-select" onchange="updateResolutionVisibility(this)">
+          <option value="webp">WebP</option>
+          <option value="png">PNG</option>
+          <option value="jpg">JPG</option>
+        </select>
+        <button id="downloadButton">Download</button>
+      </div>
+    </div>
+
+     <!-- Main Footer -->
+     <footer id="footer" class="main-footer relative">
+        <div class="footer-links w-full mx-auto px-5 py-10">
+          <div class="flex flex-wrap justify-center sm:justify-between gap-4 md:gap-0">
+            <div class="sm:basis-3/4 flex flex-wrap justify-center sm:justify-between gap-3 md:gap-0 pb-4 md:pb-0">
+              <a href="./../privacy-policy.html">Privacy Policy</a>
+              <a href="./../terms-and-conditions.html">Terms & Conditions</a>
+              <a href="./../contact.html">Contact</a>
+              <a href="./../faq.html">FAQ</a>
+              <a href="./../blog.html">Blog</a>
+            </div>
+            <div class="copyright-text text-center">&copy;2024 <span class="text-color">AnyAITool</span></div>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <!-- <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/deeplab"></script> -->
+    <script src="./js/index.js"></script>
+    <script src="./js/image-refine.js"></script>
+  </body>
+</html>
